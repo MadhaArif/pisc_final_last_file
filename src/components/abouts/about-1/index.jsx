@@ -6,7 +6,7 @@ import AboutArea from './about-area';
 import BrandArea from './brand-area';
 import Team from '../../teams/team-1/team-area';
 
-const index = () => {
+const AboutPage = () => {
      const [data, setData] = useState([]);
       const API_KEY = "AIzaSyCm3_Cs0m__byx-jAF2fVna5wU7oHh8p7o";
       const SPREADSHEET_ID = "1ofS_nOKGHmZbt3-VbMiofhcB5xbdY1EvfBdqUOXqFR4";
@@ -44,4 +44,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default AboutPage;

@@ -20,7 +20,7 @@ const CourseDetailsArea = ({ course }) => {
     if (!course?.course_desc) {
       push('/course');
     }
-  }, []);
+  }, [course?.course_desc, push]);
 
   const emphasizeInitials = (text) => {
     return text
@@ -58,7 +58,7 @@ const CourseDetailsArea = ({ course }) => {
                     {course_desc && <p>{course_desc}</p>}
 
                     <div className='read-more-btn'>
-                      <a href={form_link} target='_blank' className='edu-btn'>
+                      <a href={form_link} target='_blank' rel='noreferrer' className='edu-btn'>
                         Enroll Now <i className='icon-4'></i>
                       </a>
                     </div>
@@ -83,7 +83,7 @@ const CourseDetailsArea = ({ course }) => {
                 >
                   <div className='course-overview'>
                     <h3 className='heading-title' style={{ fontSize: '40px' }}>
-                      What's included in {title} Course | PISC College
+                      What{`'`}s included in {title} Course | PISC College
                     </h3>
 
                     <h3 className='heading-title' style={{ fontSize: '25px' }}>
@@ -92,7 +92,7 @@ const CourseDetailsArea = ({ course }) => {
                     {/* Desc 2 */}
                     {course_desc_2 && <p className='mb--60'>{course_desc_2}</p>}
                     <h5 className='title' style={{ fontSize: '25px' }}>
-                      What You'll Learn?
+                      What You{`'`}ll Learn?
                     </h5>
                     {/* Learn List */}
                     {learn_list && (
