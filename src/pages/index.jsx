@@ -40,12 +40,12 @@ export default function Home() {
 
   return (
     <Wrapper>
-      {data.length && (
+      {data.length && data?.[0]?.[0] && data[0][0] !== "0" && (
         <div
           style={{ margin: "100px 0 0" }}
           className="modal fade"
           id="exampleModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
@@ -66,7 +66,7 @@ export default function Home() {
               <div className="modal-body">
                 <img
                   style={{ width: "100%" }}
-                  src={data.length && `/assets/images/course/${data[0][0]}`}
+                  src={`/assets/images/course/${data[0][0]}`}
                   alt=""
                 />
               </div>

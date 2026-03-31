@@ -22,8 +22,7 @@ const HeaderTwo = ({ style_3, no_topBar = false }) => {
                                 <div className="logo">
                                     <Link href="/">
                                         <a>
-                                            <img className="logo-light" style={{ width: '100px' }} src={style_3 ? '/assets/images/logo/logo-white.svg' : "/assets/images/logo/logo-white.svg"} alt="Corporate Logo" />
-                                            <img className="logo-dark" style={{ width: '100px' }} src={style_3 ? '/assets/images/logo/logo-dark.svg' : "/assets/images/logo/logo-dark.svg"} alt="Corporate Logo" />
+                                            <img className="logo-light" width="100" height="100" src="/assets/images/logo/logo-white.svg" alt="Pact College Logo" />
                                         </a>
                                     </Link>
                                 </div>
@@ -38,14 +37,16 @@ const HeaderTwo = ({ style_3, no_topBar = false }) => {
                             <div className="header-right">
                                 <ul className="header-action">
                                     <li className="header-btn">
-                                        <a href="/contact-us" className="edu-btn btn-primary">
-                                            Inquire Us <i className="icon-4"></i>
-                                        </a>
+                                        <Link href="/contact-us">
+                                            <a className="edu-btn btn-primary">
+                                                Inquire Us <i className="icon-4"></i>
+                                            </a>
+                                        </Link>
                                     </li>
 
 
                                     <li className="mobile-menu-bar d-block d-xl-none">
-                                        <button className="hamberger-button" onClick={() => setIsOpen(true)}>
+                                        <button className="hamberger-button" onClick={() => setIsOpen(true)} aria-label="Open Mobile Menu">
                                             <i className="icon-54"></i>
                                         </button>
                                     </li>

@@ -5,7 +5,7 @@ const menu_data = [
         mega_menu: false,
     },
     {
-        title: 'About',
+        title: 'About Us',
         link: '/about',
         mega_menu: false,
     },
@@ -25,7 +25,7 @@ const menu_data = [
         mega_menu: false,
     },
     {
-        title: 'Contact',
+        title: 'Contact Us',
         link: '/contact-us',
         mega_menu: false,
     }

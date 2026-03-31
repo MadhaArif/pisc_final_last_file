@@ -28,22 +28,21 @@ const HeaderTopRight = () => {
     const { address, phone, phone_2, email, timing } = contact
 
     return (
-
-        <section style={{ padding: '10px 0', background: 'var(--color-primary)' }}>
+        <section style={{ padding: '10px 0', background: '#0A192F' }}>
             <section className='container' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                    {timing && <p className='mb-0' style={{ color: '#fff' }}>
-                        ⏰ {timing}
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {timing && <p className='mb-0' style={{ color: '#fff', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                        <span style={{ fontSize: '18px', marginRight: '8px' }}>⏰</span> {timing}
                     </p>}
                 </div>
 
-                <div style={{display: 'flex'}}>
-                    {phone && <p className='mb-0' style={{ color: '#fff' }}>
-                        <i className="icon-phone" style={{ color: 'var(--color-secondary)' }}></i>&nbsp;&nbsp; {phone}
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    {phone && <p className='mb-0' style={{ color: '#fff', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                        <i className="icon-phone" style={{ color: '#FFB800', marginRight: '8px' }}></i> {phone}
                     </p>}
 
-                    {email && <p className='mb-0 d-none d-lg-block ms-5' style={{ color: '#fff' }}>
-                        <i className="icon-envelope" style={{color: 'var(--color-secondary)'}}></i>&nbsp;&nbsp; {email}
+                    {email && <p className='mb-0 d-none d-lg-flex ms-5' style={{ color: '#fff', fontSize: '14px', fontWeight: '500', alignItems: 'center' }}>
+                        <i className="icon-envelope" style={{color: '#FFB800', marginRight: '8px'}}></i> {email}
                     </p>}
                 </div>
             </section>

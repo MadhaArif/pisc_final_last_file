@@ -21,8 +21,8 @@ const OffCanvas = ({ isOpen, setIsOpen }) => {
                         <div className="logo">
                             <Link href="/">
                                 <a>
-                                    <img className="logo-light" src='/assets/images/logo/logo-white.svg' alt="logo" />
-                                    <img className="logo-dark" src='/assets/images/logo/logo-dark.svg' alt="logo" />
+                                    <img className="logo-light" width="100" height="100" src='/assets/images/logo/logo-white.svg' alt="logo" />
+                                    <img className="logo-dark" width="100" height="100" src='/assets/images/logo/logo-dark.svg' alt="logo" />
                                 </a>
                             </Link>
                         </div>
@@ -44,7 +44,7 @@ const OffCanvas = ({ isOpen, setIsOpen }) => {
                                     {!menu.mobile_pages_menu &&
                                         <ul className={navTitle === menu?.title ? "sub-menu active" : "sub-menu"}>
                                             {menu?.submenus?.map((sub,i) => (
-                                                <li key={i}><Link href={`${sub.link}`}>{sub.title}</Link></li>
+                                                <li key={i}><Link href={sub.link}><a>{sub.title}</a></Link></li>
                                             ))}
                                         </ul>
                                     }
@@ -52,12 +52,12 @@ const OffCanvas = ({ isOpen, setIsOpen }) => {
                                     {menu.mobile_pages_menu &&
                                         <ul className={navTitle === menu?.title ? "sub-menu active" : "sub-menu"}>
                                             {menu?.mobile_pages_menu?.map((sub,i) => (
-                                                <li key={i}><Link href={`${sub.link}`}>{sub.title}</Link></li>
+                                                <li key={i}><Link href={sub.link}><a>{sub.title}</a></Link></li>
                                             ))}
                                         </ul>
                                     }
                                     
-                                    {!menu.submenus && <Link href={menu.link}>{menu.title}</Link>}
+                                    {!menu.submenus && <Link href={menu.link}><a>{menu.title}</a></Link>}
                                 </li>
                             ))}
                         </ul>

@@ -52,9 +52,11 @@ const BrandArea = () => {
 
                     <div className="col-lg-7">
                         <div className="d-flex gap-4 flex-wrap">
-                            {brands.map((b) => (
-                                <img key={b} className="img-fluid brand-img" src={`/assets/images/course/${b}`} alt="Brand Logo" />
-                            ))}
+                            {brands.map((b, i) => {
+                                const file = Array.isArray(b) ? b[0] : b;
+                                if (!file || file === '0') return null;
+                                return <img key={`${file}-${i}`} className="img-fluid brand-img" src={`/assets/images/course/${file}`} alt="Brand Logo" />;
+                            })}
                         </div>
                     </div>
                 </div>

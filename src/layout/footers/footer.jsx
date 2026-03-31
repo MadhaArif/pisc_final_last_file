@@ -78,7 +78,7 @@ const Footer = ({ style_2, dark_bg, home_4 }) => {
                                     <h4 className="widget-title" style={{ fontSize: '25px' }}>{w.widget_title}</h4>
                                     <div className="inner">
                                         <ul className="footer-link link-hover">
-                                            {w.footer_links.map((l, i) => <li key={i} style={{ color: 'white' }}><Link href={`/${l.link}`}><a>{l.title}</a></Link></li>)}
+                                            {w.footer_links.map((l, i) => <li key={i} style={{ color: 'white' }}><Link href={`${l.link}`}><a>{l.title}</a></Link></li>)}
                                         </ul>
                                     </div>
                                 </div>

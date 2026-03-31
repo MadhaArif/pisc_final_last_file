@@ -1,39 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import menu_data from '../menu-data';
 
 const MainMenu = () => {
     const router = useRouter();
+    const [currentPath, setCurrentPath] = useState('');
 
-    const menuItems = [
-        { name: 'Home', path: '/' },
-        { name: 'About Us', path: '/about' },
-        { name: 'Courses', path: '/course' },
-        { name: 'Upcoming Events', path: '/event' },
-        { name: 'Gallery', path: '/gallery' },
-        { name: 'Contact Us', path: '/contact-us' },
-    ];
+    useEffect(() => {
+        setCurrentPath(router.pathname);
+    }, [router.pathname]);
 
     return (
-        <ul className="mainmenu">
-            {menuItems.map(({ name, path }) => (
-                <li key={path}>
-                    <Link href={path}>
-                        <a
-                            style={{
-                                color:
-                                    router.pathname === path
-                                        ? 'var(--color-secondary)'
-                                        : 'var(--color-primary)',
-                                fontWeight: 'bold',
-                                textDecoration: 'none',
-                                borderTop: router.pathname === path
-                                    && '5px solid var(--color-secondary)',     
-                                position: router.pathname === path && 'relative',
-                                top: router.pathname === path && '-5px',
-                            }}
-                        >
-                            {name}
+        <ul className="mainmenu" style={{ display: 'flex', height: '100px', alignItems: 'center', margin: 0, padding: 0 }}>
+            {menu_data.map((menu, i) => (
+                <li key={i} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                    <Link href={menu.link}>
+                        <a style={{
+                            color:
+                                currentPath === menu.link
+                                    ? '#FFB800'
+                                    : '#1A2E39',
+                            fontWeight: '800',
+                            fontSize: '16px',
+                            textDecoration: 'none',
+                            padding: '0 25px',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'all 0.3s ease',
+                            borderTop: currentPath === menu.link ? '6px solid #FFB800' : '6px solid transparent',
+                            textTransform: 'capitalize',
+                            boxSizing: 'border-box'
+                        }}>
+                            {menu.title}
                         </a>
                     </Link>
                 </li>

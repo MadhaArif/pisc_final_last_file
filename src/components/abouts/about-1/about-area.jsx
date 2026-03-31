@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 const AboutArea = ({ imgage }) => {
   const [data, setData] = useState([]);
+  const [ceoSlideIndex, setCeoSlideIndex] = useState(0);
+  const [isCeoPaused, setIsCeoPaused] = useState(false);
   const API_KEY = "AIzaSyCm3_Cs0m__byx-jAF2fVna5wU7oHh8p7o";
   const SPREADSHEET_ID = "1ofS_nOKGHmZbt3-VbMiofhcB5xbdY1EvfBdqUOXqFR4";
   const RANGE = "ceo";
@@ -23,12 +25,52 @@ const AboutArea = ({ imgage }) => {
     fetchData();
   }, []);
 
-  const img = data.length
-    ? `/assets/images/course/${data[0][0]}`
-    : "/assets/images/about/about-01.jpg";
+  const aboutImgFile = imgage && imgage !== "0" && imgage !== 0 ? imgage : "aboutus.png";
+  const aboutImgSrc = `/assets/images/course/${aboutImgFile}`;
+
+  const ceoImgFile = data.length && data[0][0] && data[0][0] !== "0" && data[0][0] !== 0 ? data[0][0] : null;
+  const img = ceoImgFile ? `/assets/images/course/${ceoImgFile}` : "/assets/images/ceo.jpg";
   const detail = data.length
     ? data[0][1]
     : "CEO details not available at the moment.";
+
+  const detailParagraphs = (() => {
+    const byNewLine = String(detail || "")
+      .split(/\n+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    if (byNewLine.length > 1) return byNewLine;
+
+    const sentences = String(detail || "").match(/[^.!?]+[.!?]+(\s+|$)|[^.!?]+$/g);
+    if (!sentences || sentences.length <= 2) return byNewLine.length ? byNewLine : [String(detail || "")];
+
+    const grouped = [];
+    for (let i = 0; i < sentences.length; i += 2) {
+      grouped.push(`${sentences[i] || ""}${sentences[i + 1] || ""}`.trim());
+    }
+    return grouped.filter(Boolean);
+  })();
+
+  const ceoSlides = [
+    img,
+    "/assets/images/course/ceo-slide-1.jpeg",
+    "/assets/images/course/ceo-slide-2.png",
+  ].filter(Boolean);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (isCeoPaused) return;
+    if (ceoSlides.length <= 1) return;
+    const intervalId = window.setInterval(() => {
+      setCeoSlideIndex((i) => (i + 1) % ceoSlides.length);
+    }, 3200);
+    return () => window.clearInterval(intervalId);
+  }, [isCeoPaused, ceoSlides.length]);
+
+  useEffect(() => {
+    if (ceoSlideIndex >= ceoSlides.length) setCeoSlideIndex(0);
+  }, [ceoSlideIndex, ceoSlides.length]);
 
   return (
     <div className="gap-top-equal about-style-7">
@@ -53,7 +95,7 @@ const AboutArea = ({ imgage }) => {
                   education and practical training. Our mission is to make IT
                   courses in Lahore accessible to everyone, empowering students
                   with the digital, computer, and professional skills needed to
-                  succeed in today's competitive job market. We provide
+                  succeed in today&apos;s competitive job market. We provide
                   hands-on, career-focused programs that give learners
                   real-world experience with the latest software, tools, and
                   technologies. Whether you are starting fresh or aiming to
@@ -71,11 +113,17 @@ const AboutArea = ({ imgage }) => {
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="about-image-gallery">
+            <div className="about-image-gallery" style={{ display: "flex", justifyContent: "center" }}>
               <img
-                style={{ width: "100%" }}
+                style={{
+                  width: "100%",
+                  maxWidth: "520px",
+                  borderRadius: "22px",
+                  boxShadow: "0 28px 70px rgba(10, 25, 47, 0.22)",
+                  border: "1px solid rgba(255, 184, 0, 0.16)",
+                }}
                 className="main-img-1"
-                src={`/assets/images/course/${imgage}`}
+                src={aboutImgSrc}
                 alt="About Image"
               />
             </div>
@@ -105,13 +153,13 @@ const AboutArea = ({ imgage }) => {
                 <span className="shape-line">
                   <i className="icon-19"></i>
                 </span>
-                <p style={{ textAlign: "justify" }}>
+                <div style={{ textAlign: "justify" }}>
                   At Professional IT Skills College, Shadbagh Lahore, our
                   mission is to deliver high-quality, affordable, and practical
                   IT courses that empower students with digital, computer, and
                   professional skills. Through hands-on training, real-world
                   projects, and expert mentorship, we prepare learners to solve
-                  problems, think critically, and succeed in today’s competitive
+                  problems, think critically, and succeed in today&apos;s competitive
                   tech industry. Our programs are designed for beginners and
                   professionals alike, ensuring every student gains the
                   confidence and knowledge to achieve career growth locally,
@@ -140,7 +188,7 @@ const AboutArea = ({ imgage }) => {
                       tech sectors.
                     </li>
                   </ul>
-                </p>
+                </div>
               </div>
             </div>
 
@@ -157,7 +205,7 @@ const AboutArea = ({ imgage }) => {
                 <span className="shape-line">
                   <i className="icon-19"></i>
                 </span>
-                <p style={{ textAlign: "justify" }}>
+                <div style={{ textAlign: "justify" }}>
                   Our vision is to become the leading center for IT education in
                   Lahore, Pakistan, and beyond, recognized for innovative,
                   career-focused computer training. We aspire to make technology
@@ -191,7 +239,7 @@ const AboutArea = ({ imgage }) => {
                       globally in the digital era.
                     </li>
                   </ul>
-                </p>
+                </div>
               </div>
             </div>
           </div>
@@ -212,19 +260,115 @@ const AboutArea = ({ imgage }) => {
                     <i className="icon-19"></i>
                   </span>
 
-                  <p style={{ textAlign: "justify", color: "black" }}>
-                    {detail}
+                {detailParagraphs.map((text, idx) => (
+                  <p key={idx} style={{ textAlign: "justify", color: "black", marginBottom: idx === detailParagraphs.length - 1 ? 0 : "14px" }}>
+                    {text}
                   </p>
+                ))}
                 </div>
               </div>
 
               <div className="col-lg-5">
-                <img
-                  src={img}
-                  alt="Image"
-                  className="img-fluid"
-                  style={{ width: "100%", objectFit: "cover" }}
-                />
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div
+                    onMouseEnter={() => setIsCeoPaused(true)}
+                    onMouseLeave={() => setIsCeoPaused(false)}
+                    style={{
+                      width: "100%",
+                      maxWidth: "320px",
+                      position: "relative",
+                      borderRadius: "24px",
+                      overflow: "hidden",
+                      boxShadow: "0 26px 65px rgba(10, 25, 47, 0.22)",
+                      border: "1px solid rgba(255, 184, 0, 0.22)",
+                      background: "rgba(10, 25, 47, 0.06)",
+                      aspectRatio: "4 / 5",
+                    }}
+                  >
+                    {ceoSlides.map((src, idx) => (
+                      <div
+                        key={`${src}-${idx}`}
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          opacity: idx === ceoSlideIndex ? 1 : 0,
+                          transition: "opacity 520ms ease",
+                        }}
+                      >
+                        <img
+                          src={src}
+                          alt="CEO"
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background:
+                              "radial-gradient(circle at 30% 20%, rgba(255, 184, 0, 0.14) 0%, transparent 55%), linear-gradient(180deg, rgba(10, 25, 47, 0.10) 0%, rgba(10, 25, 47, 0.28) 100%)",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      </div>
+                    ))}
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: "50%",
+                        bottom: "12px",
+                        transform: "translateX(-50%)",
+                        display: "flex",
+                        gap: "8px",
+                        pointerEvents: "none",
+                      }}
+                    >
+                      {ceoSlides.map((_, idx) => (
+                        <span
+                          key={idx}
+                          style={{
+                            width: idx === ceoSlideIndex ? "18px" : "7px",
+                            height: "7px",
+                            borderRadius: "999px",
+                            background: idx === ceoSlideIndex ? "#FFB800" : "rgba(255, 255, 255, 0.75)",
+                            boxShadow: idx === ceoSlideIndex ? "0 0 0 3px rgba(10, 25, 47, 0.28)" : "none",
+                            transition: "width 220ms ease, background 220ms ease",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div style={{ textAlign: "center", marginTop: "14px" }}>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "8px 14px",
+                      borderRadius: "999px",
+                      background: "rgba(255, 184, 0, 0.16)",
+                      border: "1px solid rgba(255, 184, 0, 0.35)",
+                      color: "#0A192F",
+                      fontWeight: 800,
+                      fontSize: "13px",
+                      letterSpacing: "0.6px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    CEO & Founder
+                  </div>
+                  <div style={{ marginTop: "10px", fontSize: "22px", fontWeight: 900, color: "#0A192F", lineHeight: 1.2 }}>
+                    Muhammad Azam Tariq
+                  </div>
+                  <div style={{ marginTop: "6px", fontSize: "14px", fontWeight: 600, color: "rgba(10, 25, 47, 0.75)" }}>
+                    Professional IT Skills College
+                  </div>
+                </div>
               </div>
             </div>
           </div>

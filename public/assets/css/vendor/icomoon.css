@@ -461,7 +461,7 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  background-image: url('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tiktok-white-icon.png');
+  /* background-image: url('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tiktok-white-icon.png'); */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -470,7 +470,7 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  background-image: url('https://cdn-icons-png.freepik.com/512/2584/2584677.png');
+  /* background-image: url('https://cdn-icons-png.freepik.com/512/2584/2584677.png'); */
   background-size: cover;
   background-repeat: no-repeat;
 }
