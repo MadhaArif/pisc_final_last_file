@@ -83,9 +83,17 @@ export default function TestimonialArea() {
                                 {items.map((item, i) => {
                                     const [id, img, desc, ratings, name, title] = item;
                                     const imgsrc = `/assets/images/course/${img}`;
+                                    const isActiveView = i >= activeIndex && i < activeIndex + slidesPerView;
 
                                     return (
-                                        <div key={i} style={{ flex: `0 0 ${100 / slidesPerView}%`, paddingLeft: "10px", paddingRight: "10px" }}>
+                                        <div key={i} style={{ 
+                                            flex: `0 0 ${100 / slidesPerView}%`, 
+                                            paddingLeft: "10px", 
+                                            paddingRight: "10px",
+                                            opacity: isActiveView ? 1 : 0,
+                                            pointerEvents: isActiveView ? "auto" : "none",
+                                            transition: "opacity 400ms ease"
+                                        }}>
                                             <div className="testimonial-grid">
                                                 <div className="thumbnail">
                                                     {!!img && img !== "0" && <img style={{width: '95px',}} src={imgsrc} alt="Testimonial" />}

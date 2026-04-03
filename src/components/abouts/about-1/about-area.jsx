@@ -25,8 +25,8 @@ const AboutArea = ({ imgage }) => {
     fetchData();
   }, []);
 
-  const aboutImgFile = imgage && imgage !== "0" && imgage !== 0 ? imgage : "aboutus.png";
-  const aboutImgSrc = `/assets/images/course/${aboutImgFile}`;
+  const aboutImgFile = imgage && imgage !== "0" && imgage !== 0 ? imgage : null;
+  const aboutImgSrc = aboutImgFile ? `/assets/images/course/${aboutImgFile}` : null;
 
   const ceoImgFile = data.length && data[0][0] && data[0][0] !== "0" && data[0][0] !== 0 ? data[0][0] : null;
   const img = ceoImgFile ? `/assets/images/course/${ceoImgFile}` : "/assets/images/ceo.jpg";
@@ -113,19 +113,21 @@ const AboutArea = ({ imgage }) => {
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="about-image-gallery" style={{ display: "flex", justifyContent: "center" }}>
-              <img
-                style={{
-                  width: "100%",
-                  maxWidth: "520px",
-                  borderRadius: "22px",
-                  boxShadow: "0 28px 70px rgba(10, 25, 47, 0.22)",
-                  border: "1px solid rgba(255, 184, 0, 0.16)",
-                }}
-                className="main-img-1"
-                src={aboutImgSrc}
-                alt="About Image"
-              />
+            <div className="about-image-gallery" style={{ display: "flex", justifyContent: "center", minHeight: "300px" }}>
+              {aboutImgSrc && (
+                <img
+                  style={{
+                    width: "100%",
+                    maxWidth: "520px",
+                    borderRadius: "22px",
+                    boxShadow: "0 28px 70px rgba(10, 25, 47, 0.22)",
+                    border: "1px solid rgba(255, 184, 0, 0.16)",
+                  }}
+                  className="main-img-1"
+                  src={aboutImgSrc}
+                  alt="About Image"
+                />
+              )}
             </div>
           </div>
         </div>
