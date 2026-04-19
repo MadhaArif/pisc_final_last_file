@@ -33,6 +33,23 @@ const CourseDetailsArea = ({ course }) => {
       ?.join(' ');
   };
 
+  const parseLearnList = (value) => {
+    if (!value) return [];
+    if (Array.isArray(value)) return value;
+    if (typeof value !== 'string') return [];
+
+    const normalized = value.replace(/'/g, '"');
+    try {
+      const parsed = JSON.parse(normalized);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      const matches = normalized.match(/"([^"]+)"/g) || [];
+      return matches.map((m) => m.slice(1, -1)).filter(Boolean);
+    }
+  };
+
+  const learnItems = parseLearnList(learn_list);
+
   return (
     <section className='edu-section-gap course-details-area'>
       <div className='container'>
@@ -95,12 +112,9 @@ const CourseDetailsArea = ({ course }) => {
                       What You{`'`}ll Learn?
                     </h5>
                     {/* Learn List */}
-                    {learn_list && (
+                    {learnItems.length > 0 && (
                       <ul className='mb--60'>
-                        {learn_list &&
-                          JSON.parse(learn_list?.replace(/'/g, '"'))?.map(
-                            (l, i) => <li key={i}>{l}</li>
-                          )}
+                        {learnItems.map((l, i) => <li key={i}>{l}</li>)}
                       </ul>
                     )}
                     <h3 className='heading-title' style={{ fontSize: '25px' }}>
