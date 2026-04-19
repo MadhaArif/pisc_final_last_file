@@ -14,15 +14,16 @@ const BreadcrumbThree = ({ title, subtitle, isVideo = true }) => {
                 </div>
             ) : (
                 <>
-                    <div
-                        className="w-100 h-100 position-absolute top-0 start-0"
-                        style={{
-                            backgroundImage: "url(/assets/images/bg/bg-image-20.svg)",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat"
-                        }}
-                    />
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-100 h-100 position-absolute top-0 start-0 object-fit-cover"
+                    >
+                        <source src="/assets/images/particle.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
                     <div className="edu-breadcrumb-area position-relative text-white py-6" style={{background: "transparent"}}>
                         <div className="container">
                             <div className="row justify-content-center text-center">
