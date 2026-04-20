@@ -1,2 +1,2 @@
-# PISC college 
+# PISC College 
  
