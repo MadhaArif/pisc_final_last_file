@@ -10,6 +10,10 @@ const ContactUsArea = () => {
         const API_KEY = "AIzaSyCm3_Cs0m__byx-jAF2fVna5wU7oHh8p7o";
         const SPREADSHEET_ID = "1ofS_nOKGHmZbt3-VbMiofhcB5xbdY1EvfBdqUOXqFR4";
         const RANGE = "contact-info";
+
+        const correctedLocationName = "Professional IT Skills College (PISC)";
+        const correctedAddress = "Sheikh Jamal Ghulzar road,Near to the Jawa Barost, toky wala chowk, Shadbagh Rd, Shad Bagh, Lahore, 54000, Pakistan";
+        const correctedRating = "5.0(288)";
     
         // get data from google excel sheet
         useEffect(() => {
@@ -42,7 +46,9 @@ const ContactUsArea = () => {
                             <ul className="address-list">
                                 <li>
                                     <h5 className="title" style={{fontSize: '25px'}}>Address</h5>
-                                    <p>{address}</p>
+                                    <p style={{ marginBottom: 0 }}>{correctedLocationName}</p>
+                                    <p style={{ marginBottom: 0 }}>{correctedAddress}</p>
+                                    <p style={{ marginBottom: 0 }}>{correctedRating}</p>
                                 </li>
                                 <li>
                                     <h5 className="title" style={{ fontSize: '25px' }}>Email</h5>
