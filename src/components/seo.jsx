@@ -4,6 +4,7 @@ import Head from 'next/head';
    // ─── Default Values ──────────────────────────────────────────────── 
    const siteName    = "Professional IT Skills College (PISC)"; 
    const gaMeasurementId = "G-4NJHZY5BG1";
+   const isFontOnly = Boolean(font) && !pageTitle && !pageDescription && !pageUrl && !pageImage;
    const defaultTitle = "PISC - Best IT Courses in Lahore | Professional IT Skills College"; 
    const defaultDesc  = 
      "Professional IT Skills College (PISC) in Shadbagh, Lahore offers affordable, hands-on IT courses including web development, graphic design, digital marketing, and more. Enroll now for career-ready training in Pakistan."; 
@@ -17,6 +18,16 @@ import Head from 'next/head';
    const canonical   = pageUrl   ? `${siteUrl}${pageUrl}` : siteUrl; 
    const ogImage     = pageImage ? `${siteUrl}${pageImage}` : "https://www.professionalitskillscollege.com/assets/images/logo/logo-dark.svg"; 
  
+   if (isFontOnly) {
+     return (
+       <Head>
+         <link rel="preconnect" href="https://fonts.googleapis.com" />
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+         <link href={font} rel="stylesheet" />
+       </Head>
+     );
+   }
+
    // ─── JSON-LD: LocalBusiness + EducationalOrganization (GEO + AEO) ── 
    const jsonLd = { 
      "@context": "https://schema.org", 
