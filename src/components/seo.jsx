@@ -3,6 +3,7 @@ import Head from 'next/head';
  const SEO = ({ pageTitle, pageDescription, pageUrl, pageImage, font }) => { 
    // ─── Default Values ──────────────────────────────────────────────── 
    const siteName    = "Professional IT Skills College (PISC)"; 
+   const gaMeasurementId = "G-4NJHZY5BG1";
    const defaultTitle = "PISC - Best IT Courses in Lahore | Professional IT Skills College"; 
    const defaultDesc  = 
      "Professional IT Skills College (PISC) in Shadbagh, Lahore offers affordable, hands-on IT courses including web development, graphic design, digital marketing, and more. Enroll now for career-ready training in Pakistan."; 
@@ -260,6 +261,20 @@ import Head from 'next/head';
        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /> 
        <link rel="dns-prefetch" href="https://www.google-analytics.com" /> 
        <link rel="dns-prefetch" href="https://www.googletagmanager.com" /> 
+       <script
+         key="ga4-src"
+         async
+         src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+       ></script>
+       <script
+         key="ga4-inline"
+         dangerouslySetInnerHTML={{
+           __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementId}');`
+         }}
+       ></script>
  
        {/* ── JSON-LD Structured Data (Schema.org) ──────────────────────── */} 
        <script 
