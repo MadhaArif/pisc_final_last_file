@@ -4,6 +4,7 @@ import Head from 'next/head';
    // ─── Default Values ──────────────────────────────────────────────── 
    const siteName    = "Professional IT Skills College (PISC)"; 
    const gaMeasurementId = "G-4NJHZY5BG1";
+   const shouldLoadGa = process.env.NODE_ENV === 'production';
    const isFontOnly = Boolean(font) && !pageTitle && !pageDescription && !pageUrl && !pageImage;
    const defaultTitle = "PISC - Best IT Courses in Lahore | Professional IT Skills College"; 
    const defaultDesc  = 
@@ -272,20 +273,24 @@ import Head from 'next/head';
        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /> 
        <link rel="dns-prefetch" href="https://www.google-analytics.com" /> 
        <link rel="dns-prefetch" href="https://www.googletagmanager.com" /> 
-       <script
-         key="ga4-src"
-         async
-         src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-       ></script>
-       <script
-         key="ga4-inline"
-         dangerouslySetInnerHTML={{
-           __html: `window.dataLayer = window.dataLayer || [];
+       {shouldLoadGa && (
+         <script
+           key="ga4-src"
+           async
+           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+         ></script>
+       )}
+       {shouldLoadGa && (
+         <script
+           key="ga4-inline"
+           dangerouslySetInnerHTML={{
+             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${gaMeasurementId}');`
-         }}
-       ></script>
+           }}
+         ></script>
+       )}
  
        {/* ── JSON-LD Structured Data (Schema.org) ──────────────────────── */} 
        <script 
