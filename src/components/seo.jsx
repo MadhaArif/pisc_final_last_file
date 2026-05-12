@@ -1,4 +1,5 @@
 import Head from 'next/head'; 
+import Script from 'next/script';
  
  const SEO = ({ pageTitle, pageDescription, pageUrl, pageImage, font }) => { 
    // ─── Default Values ──────────────────────────────────────────────── 
@@ -24,7 +25,20 @@ import Head from 'next/head';
        <Head>
          <link rel="preconnect" href="https://fonts.googleapis.com" />
          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-         <link href={font} rel="stylesheet" />
+         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+         <link rel="preload" as="style" href={font} />
+         <link
+           href={font}
+           rel="stylesheet"
+           media="print"
+           onLoad={(e) => {
+             e.currentTarget.media = 'all';
+           }}
+         />
+         <noscript>
+           <link href={font} rel="stylesheet" />
+         </noscript>
        </Head>
      );
    }
@@ -129,8 +143,9 @@ import Head from 'next/head';
      ] 
    }; 
  
-   return ( 
-     <Head> 
+  return ( 
+    <> 
+    <Head> 
        {/* ── Basic ─────────────────────────────────────────────────────── */} 
        <title>{fullTitle}</title> 
        <meta httpEquiv="x-ua-compatible" content="ie=edge" /> 
@@ -268,36 +283,28 @@ import Head from 'next/head';
        <meta property="og:country-name"  content="Pakistan" /> 
        <meta property="og:postal-code"   content="54000" /> 
  
-       {/* ── Preconnect / Performance (Core Web Vitals boost) ─────────── */} 
-       <link rel="preconnect" href="https://fonts.googleapis.com" /> 
-       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /> 
-       <link rel="dns-prefetch" href="https://www.google-analytics.com" /> 
-       <link rel="dns-prefetch" href="https://www.googletagmanager.com" /> 
-       {shouldLoadGa && (
-         <script
-           key="ga4-src"
-           async
-           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-         ></script>
-       )}
-       {shouldLoadGa && (
-         <script
-           key="ga4-inline"
-           dangerouslySetInnerHTML={{
-             __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${gaMeasurementId}');`
-           }}
-         ></script>
-       )}
- 
        {/* ── JSON-LD Structured Data (Schema.org) ──────────────────────── */} 
        <script 
          type="application/ld+json" 
          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} 
        /> 
-     </Head> 
+    </Head>
+    {shouldLoadGa && (
+      <Script
+        id="ga4-src"
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+      />
+    )}
+    {shouldLoadGa && (
+      <Script id="ga4-inline" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementId}');`}
+      </Script>
+    )}
+    </>
    ); 
  }; 
  
