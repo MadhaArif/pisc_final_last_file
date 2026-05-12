@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const HeroSlider = () => {
   const slides = useMemo(
@@ -326,17 +327,15 @@ const HeroSlider = () => {
           }}
         >
           <div className="image-container">
-            <img
+            <Image
               src={slide.image}
               alt={slide.title}
-              loading={slide.id === 1 ? "eager" : "lazy"}
-              decoding="async"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                filter: "brightness(0.65) contrast(1.05)",
-              }}
+              layout="fill"
+              objectFit="cover"
+              priority={slide.id === 1}
+              sizes="100vw"
+              quality={60}
+              style={{ filter: "brightness(0.65) contrast(1.05)" }}
             />
           </div>
           <div className="slide-content">

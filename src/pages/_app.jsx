@@ -24,7 +24,7 @@ function MyApp( { Component, pageProps } ) {
     }, [] );
     return (
         <React.Fragment>
-            <SEO font="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" />
+            <SEO font="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700;800&family=Orbitron:wght@400;600;700&display=swap" />
             <Provider store={ store }>
                 <ThemeProvider defaultTheme="light">
                     <MouseMoveProvider>

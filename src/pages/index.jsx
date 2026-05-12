@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import HomeUniversity from "../components/homes/home-university";
 import SEO from "../components/seo";
 import { Wrapper } from "../layout";
@@ -28,14 +29,16 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Only run on client-side
-    import("bootstrap/dist/js/bootstrap.bundle.min.js").then(({ Modal }) => {
-      const modalElement = document.getElementById("exampleModal");
-      if (modalElement) {
-        const modal = new Modal(modalElement);
-        modal.show();
-      }
-    });
+    const timeoutId = window.setTimeout(() => {
+      import("bootstrap/dist/js/bootstrap.bundle.min.js").then(({ Modal }) => {
+        const modalElement = document.getElementById("exampleModal");
+        if (modalElement) {
+          const modal = new Modal(modalElement);
+          modal.show();
+        }
+      });
+    }, 1800);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   return (
@@ -64,11 +67,16 @@ export default function Home() {
               ></button>
 
               <div className="modal-body">
-                <img
-                  style={{ width: "100%" }}
-                  src={`/assets/images/course/${data[0][0]}`}
-                  alt=""
-                />
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
+                  <Image
+                    src={`/assets/images/course/${data[0][0]}`}
+                    alt=""
+                    layout="fill"
+                    objectFit="cover"
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    quality={70}
+                  />
+                </div>
               </div>
             </div>
           </div>
