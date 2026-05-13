@@ -10,15 +10,9 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   async headers() {
-    return [
+    const rules = [
       {
         source: '/assets/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
-        source: '/_next/static/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
@@ -30,6 +24,17 @@ const nextConfig = {
         ],
       },
     ];
+
+    if (process.env.NODE_ENV === 'production') {
+      rules.splice(1, 0, {
+        source: '/_next/static/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      });
+    }
+
+    return rules;
   },
 }
 

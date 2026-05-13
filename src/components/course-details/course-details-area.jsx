@@ -23,14 +23,21 @@ const CourseDetailsArea = ({ course }) => {
   }, [course?.course_desc, push]);
 
   const emphasizeInitials = (text) => {
-    return text
-      ?.split(' ')
-      ?.map((word) => {
-        const firstChar = word?.charAt(0);
-        const rest = word?.slice(1);
-        return `<span style="font-size:60px">${firstChar}</span>${rest}`;
-      })
-      ?.join(' ');
+    if (!text) return null;
+    const words = String(text).split(' ').filter(Boolean);
+
+    return words.map((word, index) => {
+      const firstChar = word.charAt(0);
+      const rest = word.slice(1);
+
+      return (
+        <React.Fragment key={`${word}-${index}`}>
+          <span style={{ fontSize: 60 }}>{firstChar}</span>
+          {rest}
+          {index < words.length - 1 ? ' ' : null}
+        </React.Fragment>
+      );
+    });
   };
 
   const parseLearnList = (value) => {
@@ -67,10 +74,9 @@ const CourseDetailsArea = ({ course }) => {
                     <h3
                       className='heading-title sub-heading'
                       style={{ fontWeight: '500' }}
-                      dangerouslySetInnerHTML={{
-                        __html: emphasizeInitials(title)
-                      }}
-                    />
+                    >
+                      {emphasizeInitials(title)}
+                    </h3>
                     {/* Desc */}
                     {course_desc && <p>{course_desc}</p>}
 

@@ -31,10 +31,6 @@ import Script from 'next/script';
          <link
            href={font}
            rel="stylesheet"
-           media="print"
-           onLoad={(e) => {
-             e.currentTarget.media = 'all';
-           }}
          />
          <noscript>
            <link href={font} rel="stylesheet" />
