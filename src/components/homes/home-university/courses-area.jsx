@@ -57,12 +57,12 @@ const CoursesArea = () => {
 
             <ul className="shape-group">
                 <li className="shape-1">
-                    <img className="d-block-shape-light" src="/assets/images/others/map-shape-3.png" alt="Shape" />
-                    <img className="d-none-shape-dark" src="/assets/images/others/3-Home-1.png" alt="Shape" />
+                    <img className="d-block-shape-light" src="/assets/images/others/map-shape-3.png" width={698} height={659} alt="Shape" />
+                    <img className="d-none-shape-dark" src="/assets/images/others/3-Home-1.png" width={522} height={593} alt="Shape" />
                 </li>
                 <li className="shape-2">
-                    <img className="d-block-shape-light" src="/assets/images/others/map-shape-3.png" alt="Shape" />
-                    <img className="d-none-shape-dark" src="/assets/images/others/dark-map-shape-3.png" alt="Shape" />
+                    <img className="d-block-shape-light" src="/assets/images/others/map-shape-3.png" width={698} height={659} alt="Shape" />
+                    <img className="d-none-shape-dark" src="/assets/images/others/dark-map-shape-3.png" width={522} height={593} alt="Shape" />
                 </li>
             </ul>
         </div>

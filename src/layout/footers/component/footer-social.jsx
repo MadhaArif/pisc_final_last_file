@@ -36,12 +36,12 @@ const FooterSocial = ({ black = false }) => {
     const { facebook, youtube, instagram, linked_in, twitter, tiktok } = social
 
     const social_share = [
-        { link: facebook, target: '_blank', icon: 'icon-facebook', color: 'color-fb' },
-        { link: twitter, target: '_blank', icon: 'icon-twitter', color: 'color-twitter' },
-        { link: linked_in, target: '_blank', icon: 'icon-linkedin2', color: 'color-linkd' },
-        { link: youtube, target: '_blank', icon: 'icon-youtube', color: 'color-yt' },
-        { link: instagram, target: '_blank', icon: 'icon-instagram', color: 'color-ig' },
-        { link: tiktok, target: '_blank', icon: 'icon-tiktok', color: 'color-ig' },
+        { link: facebook, target: '_blank', icon: 'icon-facebook', color: 'color-fb', name: 'Facebook' },
+        { link: twitter, target: '_blank', icon: 'icon-twitter', color: 'color-twitter', name: 'Twitter' },
+        { link: linked_in, target: '_blank', icon: 'icon-linkedin2', color: 'color-linkd', name: 'LinkedIn' },
+        { link: youtube, target: '_blank', icon: 'icon-youtube', color: 'color-yt', name: 'YouTube' },
+        { link: instagram, target: '_blank', icon: 'icon-instagram', color: 'color-ig', name: 'Instagram' },
+        { link: tiktok, target: '_blank', icon: 'icon-tiktok', color: 'color-ig', name: 'TikTok' },
     ]
 
     return (
@@ -53,6 +53,7 @@ const FooterSocial = ({ black = false }) => {
                             href={social.link}
                             target={social.target ? social.target : ''}
                             className={social.color}
+                            aria-label={social.name}
                         >
                             {/* Handle TikTok separately */}
                             {social.icon === 'icon-tiktok' ? (

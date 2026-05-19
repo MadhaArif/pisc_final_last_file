@@ -33,7 +33,7 @@ const CollegeCampus = () => {
                         <div className="campus-image-gallery">
                             <div className="campus-thumbnail">
                                 <div className="thumbnail">
-                                    <img src="/assets/images/others/campus-01.webp" alt="Campus" />
+                                    <img src="/assets/images/others/campus-01.webp" width={670} height={470} alt="Campus" />
                                 </div>
                             </div>
                             <ul className="shape-group">
@@ -51,7 +51,7 @@ const CollegeCampus = () => {
                                         y: mouseReverse(25).y
                                     } }
                                 >
-                                    <img src="/assets/images/about/shape-21.png" alt="Shape" />
+                                    <img src="/assets/images/about/shape-21.png" width={210} height={193} alt="Shape" />
                                 </motion.li>
                                 <motion.li className="shape-3 scene"
                                     animate={ {
@@ -59,7 +59,7 @@ const CollegeCampus = () => {
                                         y: mouseDirection(25).y
                                     } }
                                 >
-                                    <img src="/assets/images/about/shape-13.png" alt="Shape" />
+                                    <img src="/assets/images/about/shape-13.png" width={186} height={186} alt="Shape" />
                                 </motion.li>
                             </ul>
                         </div>
@@ -83,7 +83,7 @@ const CollegeCampus = () => {
                                                     <i className={icon}></i>
                                                 </div>
                                                 <div className="content">
-                                                    <h5 className="title">{title}</h5>
+                                                    <h3 className="title">{title}</h3>
                                                     <p>{text}</p>
                                                 </div>
                                             </div> 
@@ -114,7 +114,7 @@ const CollegeCampus = () => {
                                         y: mouseDirection(30).y
                                     } }
                                 >
-                                    <img src="/assets/images/about/shape-25.png" alt="Shape" />
+                                    <img src="/assets/images/about/shape-25.png" width={186} height={186} alt="Shape" />
                                 </motion.li>
                             </ul>
                         </div>

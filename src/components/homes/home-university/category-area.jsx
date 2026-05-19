@@ -62,7 +62,7 @@ const CategoryArea = () => {
                                         {c.icon}
                                     </div>
                                     <div className="content">
-                                        <h4 className="title" style={{ 
+                                        <h2 className="title" style={{ 
                                             fontSize: "19px", 
                                             fontWeight: "700", 
                                             marginBottom: "12px", 
@@ -70,7 +70,7 @@ const CategoryArea = () => {
                                             transition: "color 0.4s ease" 
                                         }}>
                                             {c.title}
-                                        </h4>
+                                        </h2>
                                         <p style={{ 
                                             fontSize: "15px", 
                                             color: "#666", 

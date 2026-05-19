@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useMouseMoveUI } from '../../../contexts/mouse-move-context';
 
@@ -81,8 +82,8 @@ const AboutArea = ({img, img2}) => {
                     </div>
                     <div className="col-lg-6">
                         <div className="about-image-gallery">
-                            <img className="main-img-1" width={390} height={390} style={{width: '390px'}} data-sal-delay="100" data-sal="slide-up" data-sal-duration="800" src={`/assets/images/course/${imgFile}`} alt="About Image" />
-                            <img className="main-img-2" width={230} height={230} style={{width: '230px'}} data-sal-delay="100" data-sal="slide-left" data-sal-duration="800" src={`/assets/images/course/${img2File}`} alt="About Image" />
+                            <Image className="main-img-1" width={390} height={390} style={{width: '390px'}} data-sal-delay="100" data-sal="slide-up" data-sal-duration="800" src={`/assets/images/course/${imgFile}`} alt="About Image" />
+                            <Image className="main-img-2" width={230} height={230} style={{width: '230px'}} data-sal-delay="100" data-sal="slide-left" data-sal-duration="800" src={`/assets/images/course/${img2File}`} alt="About Image" />
                         </div>
                     </div>
                 </div>

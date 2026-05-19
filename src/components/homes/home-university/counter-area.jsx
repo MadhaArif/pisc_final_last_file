@@ -52,7 +52,7 @@ const CounterArea = ({ home_3 = false, home_8 = false }) => {
                                         <Counter number={parseFloat(c.count)} text={c.text} decimal={c.decimal} />
                                     </span>
                                 </h2>
-                                <h6 className="title">{c.title}</h6>
+                                <h3 className="title">{c.title}</h3>
                             </div>
                         </div>
                     ))}

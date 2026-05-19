@@ -11,12 +11,12 @@ const SearchPopup = ({isSearchOpen,setIsSearchOpen}) => {
                     <img className="logo-dark" src='/assets/images/logo/logo-white.png' alt="logo" />
                 </div>
                 <div className="close-button" onClick={() => setIsSearchOpen(false)}>
-                    <button className="close-trigger"><i className="icon-73"></i></button>
+                    <button className="close-trigger" aria-label="Close Search"><i className="icon-73"></i></button>
                 </div>
                 <div className="inner">
                     <form className="search-form" onSubmit={handleSubmit}>
                         <input type="text" className="edublink-search-popup-field" placeholder="Search Here..." />
-                        <button className="submit-button"><i className="icon-2"></i></button>
+                        <button className="submit-button" aria-label="Submit Search"><i className="icon-2"></i></button>
                     </form>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const BrandArea = () => {
     const [data, setData] = useState({
@@ -55,7 +56,7 @@ const BrandArea = () => {
                             {brands.map((b, i) => {
                                 const file = Array.isArray(b) ? b[0] : b;
                                 if (!file || file === '0') return null;
-                                return <img key={`${file}-${i}`} className="img-fluid brand-img" width={130} height={50} src={`/assets/images/course/${file}`} alt="Brand Logo" />;
+                                return <Image key={`${file}-${i}`} className="img-fluid brand-img" width={130} height={50} src={`/assets/images/course/${file}`} alt="Brand Logo" />;
                             })}
                         </div>
                     </div>

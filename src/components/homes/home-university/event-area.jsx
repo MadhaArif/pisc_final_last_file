@@ -45,19 +45,19 @@ const EventArea = ({ event_2 }) => {
                                 </div>
                             </div>
                         )
-                    }) : <h6 className="view-text">No Upcomming Event</h6>}
+                    }) : <h3 className="view-text">No Upcomming Event</h3>}
                 </div>
 
                 <div className="event-view-all-btn" data-sal-delay="150" data-sal="slide-up" data-sal-duration="1200">
-                    <h6 className="view-text">Our Latest Events <Link href="/event">
+                    <h3 className="view-text">Our Latest Events <Link href="/event">
                         <a className="btn-transparent">View All <i className="icon-4"></i></a>
                     </Link>
-                    </h6>
+                    </h3>
                 </div>
 
                 <ul className="shape-group">
                     <li className="shape-1" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                        <img className="rotateit" src="/assets/images/about/shape-13.png" alt="Shape" />
+                        <img className="rotateit" src="/assets/images/about/shape-13.png" width={186} height={186} alt="Shape" />
                     </li>
                 </ul>
             </div>

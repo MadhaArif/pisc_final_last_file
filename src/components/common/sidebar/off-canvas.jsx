@@ -28,7 +28,7 @@ const OffCanvas = ({ isOpen, setIsOpen }) => {
                         </div>
 
                         <div className="close-menu" onClick={() => setIsOpen(false)}>
-                            <button className="close-button">
+                            <button className="close-button" aria-label="Close Menu">
                                 <i className="icon-73"></i>
                             </button>
                         </div>

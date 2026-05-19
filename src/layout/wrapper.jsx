@@ -96,7 +96,7 @@ export default function Wrapper({ children }) {
                     <img style={{ width: '200px', margin: '0 auto' }} src='/assets/images/loader.gif' />
                 </div>
             ) : (   
-                <>
+                <main>
                     { children }
                         <img
                             onClick={handleWhatsAppClick}
@@ -160,7 +160,7 @@ export default function Wrapper({ children }) {
                             }}
                         />
                     <ToastContainer />
-                </>
+                </main>
             )}
         </>
     )

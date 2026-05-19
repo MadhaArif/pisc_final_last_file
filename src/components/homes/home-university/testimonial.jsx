@@ -98,7 +98,7 @@ const Testimonial = ( { about_p_2 } ) => {
                             <SwiperSlide key={i}>
                                 <div className="testimonial-slide">
                                     <div className="content">
-                                        <div className="logo"><img src={logo} alt="Logo" /></div>
+                                        <div className="logo"><img src={logo} width={152} height={45} alt="Logo" /></div>
                                         <p>{desc}</p>
                                         <div className="rating-icon">
                                             {ratings.map((r) => <i key={r} className="icon-23"></i>)}
@@ -106,10 +106,10 @@ const Testimonial = ( { about_p_2 } ) => {
                                     </div>
                                     <div className="author-info">
                                         <div className="thumb">
-                                            <img src={img} alt="Testimonial" />
+                                            <img src={img} width={70} height={70} alt="Testimonial" />
                                         </div>
                                         <div className="info">
-                                            <h5 className="title">{name}</h5>
+                                            <h3 className="title">{name}</h3>
                                             <span className="subtitle">{title}</span>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@ const Testimonial = ( { about_p_2 } ) => {
                             y: mouseReverse(25).y
                         } }
                     >
-                        <img src="/assets/images/about/shape-30.png" alt="Shape" />
+                        <img src="/assets/images/about/shape-30.png" width={228} height={197} alt="Shape" />
                     </motion.li>
                     <motion.li className="shape-2 scene" data-sal-delay="200" data-sal="fade" data-sal-duration="1000"
                         animate={ {
@@ -135,14 +135,14 @@ const Testimonial = ( { about_p_2 } ) => {
                             y: mouseDirection(25).y
                         } }
                     >
-                        <img src="/assets/images/about/shape-25.png" alt="Shape" />
+                        <img src="/assets/images/about/shape-25.png" width={186} height={186} alt="Shape" />
                     </motion.li>
                 </ul>
             </div>
             <ul className="shape-group">
                 <li className="shape-3" data-sal-delay="200" data-sal="fade" data-sal-duration="1000">
-                    <img className="d-block-shape-light" src="/assets/images/others/map-shape-3.png" alt="Shape" />
-                    <img className="d-none-shape-dark" src="/assets/images/others/dark-map-2-shape-3.png" alt="Shape" />
+                    <img className="d-block-shape-light" src="/assets/images/others/map-shape-3.png" width={698} height={659} alt="Shape" />
+                    <img className="d-none-shape-dark" src="/assets/images/others/dark-map-2-shape-3.png" width={698} height={659} alt="Shape" />
                 </li>
             </ul>
         </div>

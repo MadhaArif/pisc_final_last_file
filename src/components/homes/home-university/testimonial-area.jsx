@@ -96,7 +96,7 @@ export default function TestimonialArea() {
                                         }}>
                                             <div className="testimonial-grid">
                                                 <div className="thumbnail">
-                                                    {!!img && img !== "0" && <img style={{width: '95px',}} src={imgsrc} alt="Testimonial" />}
+                                                    {!!img && img !== "0" && <img width={95} height={95} style={{width: '95px',}} src={imgsrc} alt="Testimonial" />}
                                                     <span className="qoute-icon"><i className="icon-26"></i></span>
                                                 </div>
                                                 <div className="content">
@@ -106,7 +106,7 @@ export default function TestimonialArea() {
                                                             <i key={index} className="icon-23" />
                                                         ))}
                                                     </div>
-                                                    <h5 className="title">{name}</h5>
+                                                    <h3 className="title">{name}</h3>
                                                     <span className="subtitle">{title}</span>
                                                 </div>
                                             </div>
