@@ -55,7 +55,7 @@ const BrandArea = () => {
                             {brands.map((b, i) => {
                                 const file = Array.isArray(b) ? b[0] : b;
                                 if (!file || file === '0') return null;
-                                return <img key={`${file}-${i}`} className="img-fluid brand-img" src={`/assets/images/course/${file}`} alt="Brand Logo" />;
+                                return <img key={`${file}-${i}`} className="img-fluid brand-img" width={130} height={50} src={`/assets/images/course/${file}`} alt="Brand Logo" />;
                             })}
                         </div>
                     </div>

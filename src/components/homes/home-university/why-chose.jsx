@@ -40,7 +40,7 @@ const WhyChose = () => {
                         y: mouseDirection(30).y
                     } }
                 >
-                    <img src="/assets/images/about/shape-13.png" alt="shape" />
+                    <img src="/assets/images/about/shape-13.png" width={193} height={180} alt="shape" />
                 </motion.li>
                 <motion.li className="shape-3 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200"
                     animate={ {
@@ -56,7 +56,7 @@ const WhyChose = () => {
                         y: mouseReverse(30).y
                     } }
                 >
-                    <img src="/assets/images/about/shape-40.png" alt="shape" />
+                    <img src="/assets/images/about/shape-40.png" width={150} height={150} alt="shape" />
                 </motion.li>
             </ul>
         </section>

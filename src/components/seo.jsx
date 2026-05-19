@@ -27,14 +27,10 @@ import Script from 'next/script';
          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
          <link rel="dns-prefetch" href="https://www.google-analytics.com" />
          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-         <link rel="preload" as="style" href={font} />
          <link
            href={font}
            rel="stylesheet"
          />
-         <noscript>
-           <link href={font} rel="stylesheet" />
-         </noscript>
        </Head>
      );
    }
