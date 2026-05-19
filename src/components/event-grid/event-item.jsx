@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 const EventItem = ({ event }) => {
     const [id, title, category, date, time, bullets, sm_desc, sm_desc_2, img, form_link, contact, location, detail_img] = event || [];
@@ -14,7 +15,7 @@ const EventItem = ({ event }) => {
                 <div className="thumbnail">
 
                     <a>
-                        <img src={`/assets/images/event/${img}`} alt="Blog Images" />
+                        <Image src={`/assets/images/event/${img}`} width={370} height={250} layout="responsive" objectFit="cover" alt="Blog Images" />
                     </a>
                     <div className="event-time">
                         <span><i className="icon-33"></i>{time}</span>

@@ -57,13 +57,13 @@ const Footer = ({ style_2, dark_bg, home_4 }) => {
                                 <div className="logo">
                                     <Link href={'/'}>
                                         <a>
-                                            {!dark_bg && <img style={{ width: '100px' }} className="logo-light" src='/assets/images/logo/logo-dark.svg' alt="Corporate Logo" />}
+                                            {!dark_bg && <img style={{ width: '100px' }} className="logo-light" src='/assets/images/logo/logo-dark.svg' width={100} height={100} alt="Corporate Logo" />}
                                         </a>
                                     </Link>
 
                                     <Link href={'/'}>
                                         <a>
-                                            {dark_bg && <img style={{ width: '100px' }} className="logo-light" src={home_4 ? '/assets/images/logo/logo-white.svg' : '/assets/images/logo/logo-white.svg'} alt="Corporate Logo" />}
+                                            {dark_bg && <img style={{ width: '100px' }} className="logo-light" src={home_4 ? '/assets/images/logo/logo-white.svg' : '/assets/images/logo/logo-white.svg'} width={100} height={100} alt="Corporate Logo" />}
                                         </a>
                                     </Link>
                                 </div>

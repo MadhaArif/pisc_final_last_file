@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const CourseTypeSix = ({ course, color }) => {
     const [id, title, category, level, course_outline, duration, lesson, img, short_desc, instructor, language, certificate, course_desc, course_desc_2, learn_list, course_desc_3, timing, form_link, detail_img, detail_img_2, sub_title] = course || []
@@ -15,7 +16,7 @@ const CourseTypeSix = ({ course, color }) => {
                 <div className="inner">
                     <div className="thumbnail">
                         <a>
-                            <img src={`/assets/images/course/${imgFile}`} alt="Course Meta" />
+                            <Image src={`/assets/images/course/${imgFile}`} width={370} height={250} layout="responsive" objectFit="cover" alt="Course Meta" />
                         </a>
 
                         <div className="time-top">

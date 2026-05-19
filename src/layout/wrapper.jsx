@@ -93,7 +93,7 @@ export default function Wrapper({ children }) {
         <>
             {loading ? (
                 <div style={{height: '100vh', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <img style={{ width: '200px', margin: '0 auto' }} src='/assets/images/loader.gif' />
+                    <img style={{ width: '200px', margin: '0 auto' }} src='/assets/images/loader.gif' width={200} height={200} alt="Loading..." />
                 </div>
             ) : (   
                 <main>
@@ -120,6 +120,8 @@ export default function Wrapper({ children }) {
                                 filter: 'drop-shadow(0 12px 22px rgba(0,0,0,0.24)) drop-shadow(0 0 12px rgba(37,211,102,0.30)) drop-shadow(0 0 10px rgba(255,184,0,0.16))',
                             }}
                             src="/assets/images/whatsapp.svg"
+                            width={70}
+                            height={70}
                             alt="WhatsApp"
                         />
                         <div
