@@ -57,7 +57,7 @@ const HeaderTwo = ({ style_3, no_topBar = false }) => {
                 </div>
 
                 {/* <!-- Start Search Popup  --> */}
-                <SearchPopup isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
+                {isSearchOpen && <SearchPopup isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />}
                 {/* <!-- End Search Popup  --> */}
             </header>
 

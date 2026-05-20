@@ -284,12 +284,12 @@ import Script from 'next/script';
     {shouldLoadGa && (
       <Script
         id="ga4-src"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
       />
     )}
     {shouldLoadGa && (
-      <Script id="ga4-inline" strategy="afterInteractive">
+      <Script id="ga4-inline" strategy="lazyOnload">
         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());

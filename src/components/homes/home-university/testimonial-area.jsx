@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function TestimonialArea() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -96,7 +97,7 @@ export default function TestimonialArea() {
                                         }}>
                                             <div className="testimonial-grid">
                                                 <div className="thumbnail">
-                                                    {!!img && img !== "0" && <img width={95} height={95} style={{width: '95px',}} src={imgsrc} alt="Testimonial" />}
+                                                    {!!img && img !== "0" && <Image width={95} height={95} src={imgsrc} alt="Testimonial" priority={i < 2} />}
                                                     <span className="qoute-icon"><i className="icon-26"></i></span>
                                                 </div>
                                                 <div className="content">
