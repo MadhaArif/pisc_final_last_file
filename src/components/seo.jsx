@@ -1,12 +1,38 @@
 import Head from 'next/head'; 
 import Script from 'next/script';
+import { useState, useEffect } from 'react';
  
  const SEO = ({ pageTitle, pageDescription, pageUrl, pageImage, font }) => { 
+   const [loadAnalytics, setLoadAnalytics] = useState(false);
+
    // ─── Default Values ──────────────────────────────────────────────── 
    const siteName    = "Professional IT Skills College (PISC)"; 
    const gaMeasurementId = "G-4NJHZY5BG1";
    const shouldLoadGa = process.env.NODE_ENV === 'production';
    const isFontOnly = Boolean(font) && !pageTitle && !pageDescription && !pageUrl && !pageImage;
+
+   useEffect(() => {
+     if (!shouldLoadGa) return;
+     const handleInteraction = () => {
+       setLoadAnalytics(true);
+       cleanup();
+     };
+
+     const cleanup = () => {
+       window.removeEventListener('mousemove', handleInteraction);
+       window.removeEventListener('scroll', handleInteraction);
+       window.removeEventListener('touchstart', handleInteraction);
+       window.removeEventListener('click', handleInteraction);
+     };
+
+     window.addEventListener('mousemove', handleInteraction, { passive: true });
+     window.addEventListener('scroll', handleInteraction, { passive: true });
+     window.addEventListener('touchstart', handleInteraction, { passive: true });
+     window.addEventListener('click', handleInteraction, { passive: true });
+
+     return cleanup;
+   }, [shouldLoadGa]);
+
    const defaultTitle = "PISC - Best IT Courses in Lahore | Professional IT Skills College"; 
    const defaultDesc  = 
      "Professional IT Skills College (PISC) in Shadbagh, Lahore offers affordable, hands-on IT courses including web development, graphic design, digital marketing, and more. Enroll now for career-ready training in Pakistan."; 
@@ -281,26 +307,28 @@ import Script from 'next/script';
          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} 
        /> 
     </Head>
-    {shouldLoadGa && (
-      <Script
-        id="ga4-src"
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-      />
-    )}
-    {shouldLoadGa && (
-      <Script id="ga4-inline" strategy="lazyOnload">
-        {`window.dataLayer = window.dataLayer || [];
+     {shouldLoadGa && loadAnalytics && (
+       <Script
+         id="ga4-src"
+         strategy="afterInteractive"
+         src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+       />
+     )}
+     {shouldLoadGa && loadAnalytics && (
+       <Script id="ga4-inline" strategy="afterInteractive">
+         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${gaMeasurementId}');`}
-      </Script>
-    )}
+       </Script>
+     )}
     </>
    ); 
- }; 
+ };
+
+export default SEO;
+
  
- export default SEO; 
  
  /* ───────────────────────────────────────────────────────────────────────── 
     HOW TO USE ON EACH PAGE: 
