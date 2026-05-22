@@ -81,7 +81,22 @@ const CourseDetailsArea = ({ course }) => {
                     {course_desc && <p>{course_desc}</p>}
 
                     <div className='read-more-btn'>
-                      <a href={form_link} target='_blank' rel='noreferrer' className='edu-btn'>
+                      <a 
+                        id="course-enroll-button"
+                        href={form_link} 
+                        target='_blank' 
+                        rel='noreferrer' 
+                        className='edu-btn'
+                        onClick={() => {
+                          if (typeof window !== 'undefined' && window.gtag) {
+                            window.gtag('event', 'course_inquiry', {
+                              'event_category': 'Form',
+                              'event_label': title,
+                              'course_title': title
+                            });
+                          }
+                        }}
+                      >
                         Enroll Now <i className='icon-4'></i>
                       </a>
                     </div>

@@ -12,7 +12,7 @@ const MainMenu = () => {
     }, [router.pathname]);
 
     return (
-        <ul className="mainmenu" style={{ display: 'flex', height: '100px', alignItems: 'center', margin: 0, padding: 0 }}>
+        <ul className="mainmenu" style={{ display: 'flex', height: '80px', alignItems: 'center', margin: 0, padding: 0 }}>
             {menu_data.map((menu, i) => (
                 <li key={i} style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
                     <Link href={menu.link}>
@@ -21,16 +21,16 @@ const MainMenu = () => {
                                 currentPath === menu.link
                                     ? '#FFB800'
                                     : '#1A2E39',
-                            fontWeight: '800',
-                            fontSize: '16px',
+                            fontWeight: '700',
+                            fontSize: '15px',
                             textDecoration: 'none',
-                            padding: '0 25px',
+                            padding: '0 20px',
                             height: '100%',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             transition: 'all 0.3s ease',
-                            borderTop: currentPath === menu.link ? '6px solid #FFB800' : '6px solid transparent',
+                            borderTop: currentPath === menu.link ? '4px solid #FFB800' : '4px solid transparent',
                             textTransform: 'capitalize',
                             boxSizing: 'border-box'
                         }}>

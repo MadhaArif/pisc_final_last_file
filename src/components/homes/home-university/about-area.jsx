@@ -44,7 +44,7 @@ const tabs = {
 
 const AboutArea = ({img, img2}) => {
     const imgFile = img && img !== 0 && img !== '0' ? img : 'aboutus.png';
-    const img2File = img2 && img2 !== 0 && img2 !== '0' ? img2 : 'aboutus2.png';
+    const img2File = img2 && img2 !== 0 && img2 !== '0' ? img2 : 'studentspic123.png';
 
     return (
         <div className="edu-about-area about-style-3">
@@ -82,8 +82,12 @@ const AboutArea = ({img, img2}) => {
                     </div>
                     <div className="col-lg-6">
                         <div className="about-image-gallery">
-                            <Image className="main-img-1" width={390} height={390} style={{width: '390px'}} data-sal-delay="100" data-sal="slide-up" data-sal-duration="800" src={`/assets/images/course/${imgFile}`} alt="About Image" />
-                            <Image className="main-img-2" width={230} height={230} style={{width: '230px'}} data-sal-delay="100" data-sal="slide-left" data-sal-duration="800" src={`/assets/images/course/${img2File}`} alt="About Image" />
+                            <div className="main-img-1" style={{borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', overflow: 'hidden', display: 'inline-block'}} data-sal-delay="100" data-sal="slide-up" data-sal-duration="800">
+                                <Image width={445} height={520} src={`/assets/images/course/${imgFile}`} alt="About Image" priority unoptimized={true} />
+                            </div>
+                            <div className="main-img-2" style={{border: '8px solid #fff', borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', overflow: 'hidden'}} data-sal-delay="100" data-sal="slide-left" data-sal-duration="800">
+                                <Image width={220} height={220} src={`/assets/images/course/${img2File}`} alt="About Image" priority unoptimized={true} />
+                            </div>
                         </div>
                     </div>
                 </div>

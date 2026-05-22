@@ -26,6 +26,16 @@ const ContactUsForm = () => {
         try {
             const docRef = await addDoc(collection(db, "users"), { ...formData, createdAt: Timestamp.fromDate(new Date()) });
             console.log("Document written with ID: ", docRef.id);
+            
+            // Fire GA4 Event for Form Submission
+            if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'generate_lead', {
+                    'event_category': 'Form',
+                    'event_label': 'Contact Us Form',
+                    'form_id': 'contact-us-form'
+                });
+            }
+
             e.target.reset();
             setResult(true);
 
@@ -39,7 +49,7 @@ const ContactUsForm = () => {
     }, 5000);
 
     return (
-        <form className="rnt-contact-form rwt-dynamic-form" action="" onSubmit={sendEmail}>
+        <form id="contact-us-form" className="rnt-contact-form rwt-dynamic-form" action="" onSubmit={sendEmail}>
             <div className="row row--10">
                 <div className="form-group col-12">
                     <input type="text" name="name" placeholder="Your name*" required onChange={handleChange} />

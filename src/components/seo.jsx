@@ -3,35 +3,11 @@ import Script from 'next/script';
 import { useState, useEffect } from 'react';
  
  const SEO = ({ pageTitle, pageDescription, pageUrl, pageImage, font }) => { 
-   const [loadAnalytics, setLoadAnalytics] = useState(false);
-
+ 
    // ─── Default Values ──────────────────────────────────────────────── 
    const siteName    = "Professional IT Skills College (PISC)"; 
    const gaMeasurementId = "G-4NJHZY5BG1";
    const shouldLoadGa = process.env.NODE_ENV === 'production';
-   const isFontOnly = Boolean(font) && !pageTitle && !pageDescription && !pageUrl && !pageImage;
-
-   useEffect(() => {
-     if (!shouldLoadGa) return;
-     const handleInteraction = () => {
-       setLoadAnalytics(true);
-       cleanup();
-     };
-
-     const cleanup = () => {
-       window.removeEventListener('mousemove', handleInteraction);
-       window.removeEventListener('scroll', handleInteraction);
-       window.removeEventListener('touchstart', handleInteraction);
-       window.removeEventListener('click', handleInteraction);
-     };
-
-     window.addEventListener('mousemove', handleInteraction, { passive: true });
-     window.addEventListener('scroll', handleInteraction, { passive: true });
-     window.addEventListener('touchstart', handleInteraction, { passive: true });
-     window.addEventListener('click', handleInteraction, { passive: true });
-
-     return cleanup;
-   }, [shouldLoadGa]);
 
    const defaultTitle = "PISC - Best IT Courses in Lahore | Professional IT Skills College"; 
    const defaultDesc  = 
@@ -45,21 +21,7 @@ import { useState, useEffect } from 'react';
    const description = pageDescription || defaultDesc; 
    const canonical   = pageUrl   ? `${siteUrl}${pageUrl}` : siteUrl; 
    const ogImage     = pageImage ? `${siteUrl}${pageImage}` : "https://www.professionalitskillscollege.com/assets/images/logo/logo-dark.svg"; 
- 
-   if (isFontOnly) {
-     return (
-       <Head>
-         <link rel="preconnect" href="https://fonts.googleapis.com" />
-         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-         <link
-           href={font}
-           rel="stylesheet"
-         />
-       </Head>
-     );
-   }
+
 
    // ─── JSON-LD: LocalBusiness + EducationalOrganization (GEO + AEO) ── 
    const jsonLd = { 
@@ -307,14 +269,14 @@ import { useState, useEffect } from 'react';
          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} 
        /> 
     </Head>
-     {shouldLoadGa && loadAnalytics && (
+     {shouldLoadGa && (
        <Script
          id="ga4-src"
          strategy="afterInteractive"
          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
        />
      )}
-     {shouldLoadGa && loadAnalytics && (
+     {shouldLoadGa && (
        <Script id="ga4-inline" strategy="afterInteractive">
          {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}

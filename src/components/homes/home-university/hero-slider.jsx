@@ -335,6 +335,7 @@ const HeroSlider = () => {
               priority={slide.id === 1}
               sizes="100vw"
               quality={60}
+              unoptimized={true}
               style={{ filter: "brightness(0.65) contrast(1.05)" }}
             />
           </div>

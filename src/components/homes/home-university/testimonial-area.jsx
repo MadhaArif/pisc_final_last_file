@@ -60,12 +60,22 @@ export default function TestimonialArea() {
                     <div className="col-lg-5">
                         <div className="testimonial-heading-area">
                             <div className="section-title section-left" style={{marginBottom: '0'}} data-sal-delay="50" data-sal="slide-up" data-sal-duration="800">
-                                <span className="pre-title">Testimonials</span>
+                                <span className="pre-title" style={{ textTransform: 'uppercase' }}>Testimonials</span>
                                 <h2 className="title sub-heading">What Our Students Have To Say</h2>
                                 <span className="shape-line"><i className="icon-19"></i></span>
-                                <p>Discover how PISC has helped transform careers through practical, industry-relevant training. Our students share their experiences of gaining valuable digital skills.</p>
+                                <p style={{ marginTop: '20px' }}>Discover how PISC has helped transform careers through practical, industry-relevant training. Our students share their experiences of gaining valuable digital skills.</p>
                                 <Link href="/gallery">
-                                    <a className="edu-btn btn-primary">Successful Stories <i className="icon-4"></i>
+                                    <a className="edu-btn btn-primary" style={{ 
+                                        background: '#002147', 
+                                        color: '#fff',
+                                        borderRadius: '5px', 
+                                        padding: '0 30px', 
+                                        height: '55px', 
+                                        lineHeight: '55px',
+                                        fontSize: '16px',
+                                        fontWeight: '700',
+                                        marginTop: '10px'
+                                    }}>Successful Stories <i className="icon-4" style={{ marginLeft: '10px' }}></i>
                                     </a>
                                 </Link>
                             </div>
@@ -95,20 +105,20 @@ export default function TestimonialArea() {
                                             pointerEvents: isActiveView ? "auto" : "none",
                                             transition: "opacity 400ms ease"
                                         }}>
-                                            <div className="testimonial-grid">
-                                                <div className="thumbnail">
-                                                    {!!img && img !== "0" && <Image width={95} height={95} src={imgsrc} alt="Testimonial" priority={i < 2} />}
-                                                    <span className="qoute-icon"><i className="icon-26"></i></span>
+                                            <div className="testimonial-grid testimonial-style-3" style={{ padding: '40px 30px', borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+                                                <div className="thumbnail" style={{ marginBottom: '25px' }}>
+                                                    {!!img && img !== "0" && <Image width={95} height={95} src={imgsrc} alt="Testimonial" priority={i < 2} unoptimized={true} style={{ borderRadius: '50%' }} />}
+                                                    <span className="qoute-icon" style={{ background: '#002147', border: '3px solid #fff' }}><i className="icon-26"></i></span>
                                                 </div>
                                                 <div className="content">
-                                                    <p>{desc}</p>
-                                                    <div className="rating-icon">
-                                                        {Array.from({ length: ratings }, (_, index) => (
-                                                            <i key={index} className="icon-23" />
+                                                    <p style={{ fontSize: '15px', lineHeight: '1.6', marginBottom: '20px', minHeight: '60px' }}>{desc}</p>
+                                                    <div className="rating-icon" style={{ marginBottom: '10px' }}>
+                                                        {Array.from({ length: 5 }, (_, index) => (
+                                                            <i key={index} className="icon-23" style={{ color: '#F8B81F', fontSize: '14px', margin: '0 1px' }} />
                                                         ))}
                                                     </div>
-                                                    <h3 className="title">{name}</h3>
-                                                    <span className="subtitle">{title}</span>
+                                                    <h3 className="title" style={{ fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>{name}</h3>
+                                                    <span className="subtitle" style={{ fontSize: '14px', color: '#666' }}>{title}</span>
                                                 </div>
                                             </div>
                                         </div>

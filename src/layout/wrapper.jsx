@@ -86,6 +86,15 @@ export default function Wrapper({ children }) {
     const handleWhatsAppClick = () => {
             const phoneNumber = '923166474545';
             const whatsappURL = `https://wa.me/${phoneNumber}`;
+            
+            // Fire GA4 Event
+            if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'whatsapp_click', {
+                    'event_category': 'Contact',
+                    'event_label': 'WhatsApp Floating Button'
+                });
+            }
+            
             window.open(whatsappURL, '_blank');
         };
 
@@ -99,6 +108,7 @@ export default function Wrapper({ children }) {
                 <main>
                     { children }
                         <img
+                            id="whatsapp-button"
                             onClick={handleWhatsAppClick}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-4px) scale(1.07)';

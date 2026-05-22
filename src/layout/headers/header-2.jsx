@@ -38,8 +38,17 @@ const HeaderTwo = ({ style_3, no_topBar = false }) => {
                                 <ul className="header-action">
                                     <li className="header-btn">
                                         <Link href="/contact-us">
-                                            <a className="edu-btn btn-primary">
-                                                Inquire Us <i className="icon-4"></i>
+                                            <a className="edu-btn btn-primary" style={{ 
+                                                 background: '#002147', 
+                                                 color: '#fff',
+                                                 borderRadius: '5px', 
+                                                 padding: '0 30px', 
+                                                 height: '55px', 
+                                                 lineHeight: '55px',
+                                                 fontSize: '16px',
+                                                 fontWeight: '700'
+                                             }}>
+                                                Inquire Us <i className="icon-4" style={{ marginLeft: '10px' }}></i>
                                             </a>
                                         </Link>
                                     </li>

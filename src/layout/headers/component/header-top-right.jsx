@@ -28,24 +28,49 @@ const HeaderTopRight = () => {
     const { address, phone, phone_2, email, timing } = contact
 
     return (
-        <section style={{ padding: '10px 0', background: '#0A192F' }}>
-            <section className='container' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    {timing && <p className='mb-0' style={{ color: '#fff', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
-                        <span style={{ fontSize: '18px', marginRight: '8px' }}>⏰</span> {timing}
-                    </p>}
-                </div>
+        <section style={{ padding: '8px 0', background: '#002147', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className='container'>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    {/* Left: Timing */}
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                         {timing && (
+                             <div style={{ color: '#fff', fontSize: '13px', fontWeight: '600', display: 'flex', alignItems: 'center' }}>
+                                 <i className="icon-71" style={{ color: '#F8B81F', fontSize: '16px', marginRight: '8px' }}></i>
+                                 {timing}
+                             </div>
+                         )}
+                     </div>
 
-                <div style={{display: 'flex', alignItems: 'center'}}>
-                    {phone && <p className='mb-0' style={{ color: '#fff', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
-                        <i className="icon-phone" style={{ color: '#FFB800', marginRight: '8px' }}></i> {phone}
-                    </p>}
+                     {/* Right: Phone & Email */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
+                        {phone && (
+                            <a 
+                                id="call-button"
+                                href={`tel:${phone}`} 
+                                onClick={() => {
+                                    if (typeof window !== 'undefined' && window.gtag) {
+                                        window.gtag('event', 'call_click', {
+                                            'event_category': 'Contact',
+                                            'event_label': 'Header Phone'
+                                        });
+                                    }
+                                }}
+                                style={{ color: '#fff', fontSize: '13px', fontWeight: '600', display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+                            >
+                                <i className="icon-phone" style={{ color: '#F8B81F', fontSize: '16px', marginRight: '8px' }}></i>
+                                {phone}
+                            </a>
+                        )}
 
-                    {email && <p className='mb-0 d-none d-lg-flex ms-5' style={{ color: '#fff', fontSize: '14px', fontWeight: '500', alignItems: 'center' }}>
-                        <i className="icon-envelope" style={{color: '#FFB800', marginRight: '8px'}}></i> {email}
-                    </p>}
+                        {email && (
+                            <a href={`mailto:${email}`} className="d-none d-lg-flex" style={{ color: '#fff', fontSize: '13px', fontWeight: '600', alignItems: 'center', textDecoration: 'none' }}>
+                                <i className="icon-envelope" style={{ color: '#F8B81F', fontSize: '16px', marginRight: '8px' }}></i>
+                                {email}
+                            </a>
+                        )}
+                    </div>
                 </div>
-            </section>
+            </div>
         </section>
     )
 }

@@ -16,7 +16,7 @@ const CourseTypeSix = ({ course, color }) => {
                 <div className="inner">
                     <div className="thumbnail">
                         <a>
-                            <Image src={`/assets/images/course/${imgFile}`} width={370} height={250} layout="responsive" objectFit="cover" alt="Course Meta" />
+                            <Image src={`/assets/images/course/${imgFile}`} width={370} height={250} layout="responsive" objectFit="cover" alt="Course Meta" unoptimized={true} />
                         </a>
 
                         <div className="time-top">
