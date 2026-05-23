@@ -1,2 +1,2 @@
-# PISC_College 
+# PISC*College 
 
