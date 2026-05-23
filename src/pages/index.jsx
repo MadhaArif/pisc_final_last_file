@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import HomeUniversity from "../components/homes/home-university";
 import SEO from "../components/seo";
