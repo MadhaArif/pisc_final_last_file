@@ -132,7 +132,7 @@ export default function Wrapper({ children }) {
                             src="/assets/images/whatsapp.svg"
                             width={70}
                             height={70}
-                            alt="WhatsApp"
+                            alt="WhatsApp Support"
                         />
                         <div
                             ref={cursorRef}

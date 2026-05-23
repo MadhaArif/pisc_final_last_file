@@ -26,7 +26,7 @@ const CourseDetailsSidebar = ({ course }) => {
                                 {lesson && <li className='text-white'>
                                     <span className="label">
                                         <Books />
-                                        Lessons:</span>
+                                        Lectures:</span>
                                     <span className="value">{lesson}</span>
                                 </li>}
                             </ul>
