@@ -3,7 +3,7 @@ import { Footer, Header, HeaderTwo } from '../../layout';
 import BreadcrumbThree from '../breadcrumb/breadcrumb-3';
 import CourseDetailsArea from './course-details-area';
 
-const index = ({ course }) => {
+const CourseDetails = ({ course }) => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -16,4 +16,4 @@ const index = ({ course }) => {
     )
 }
 
-export default index;
+export default CourseDetails;

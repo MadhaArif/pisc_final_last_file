@@ -4,7 +4,7 @@ import BreadcrumbThree from '../../breadcrumb/breadcrumb-3';
 import CourseArea from './course-area';
 import TeamArea from './team-area';
 
-const index = ({team}) => {
+const TeamDetails = ({team}) => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -18,4 +18,4 @@ const index = ({team}) => {
     )
 }
 
-export default index;
+export default TeamDetails;

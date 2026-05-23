@@ -4,7 +4,7 @@ import BreadcrumbThree from '../breadcrumb/breadcrumb-3';
 import FaqArea from './query-area';
 
 
-const index = () => {
+const Queries = () => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -17,4 +17,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default Queries;

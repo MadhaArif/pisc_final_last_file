@@ -3,7 +3,7 @@ import { Footer, Header } from '../../../layout';
 import Breadcrumb from '../../breadcrumb/breadcrumb';
 import TeamArea from './team-area';
 
-const index = () => {
+const TeamThree = () => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -16,4 +16,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default TeamThree;

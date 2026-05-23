@@ -121,7 +121,7 @@ const CourseDetailsArea = ({ course }) => {
                 >
                   <div className='course-overview'>
                     <h3 className='heading-title' style={{ fontSize: '40px' }}>
-                      What{`'`}s included in {title} Course | PISC College
+                      What&apos;s included in {title} Course | PISC College
                     </h3>
 
                     <h3 className='heading-title' style={{ fontSize: '25px' }}>
@@ -130,7 +130,7 @@ const CourseDetailsArea = ({ course }) => {
                     {/* Desc 2 */}
                     {course_desc_2 && <p className='mb--60'>{course_desc_2}</p>}
                     <h5 className='title' style={{ fontSize: '25px' }}>
-                      What You{`'`}ll Learn?
+                      What You&apos;ll Learn?
                     </h5>
                     {/* Learn List */}
                     {learnItems.length > 0 && (

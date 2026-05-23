@@ -3,7 +3,7 @@ import { Footer, HeaderTwo } from '../../layout';
 import BreadcrumbThree from '../breadcrumb/breadcrumb-3';
 import EventArea from './event-area';
 
-const index = () => {
+const EventGrid = () => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -16,4 +16,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default EventGrid;

@@ -9,7 +9,7 @@ import TestimonialArea from './testimonial-area';
 import AdBanner from './ad-banner';
 import BrandArea from './brand-area';
 
-const index = () => {
+const HomeUniversity = () => {
   const [data, setData] = useState([]);
   const API_KEY = "AIzaSyCm3_Cs0m__byx-jAF2fVna5wU7oHh8p7o";
   const SPREADSHEET_ID = "1ofS_nOKGHmZbt3-VbMiofhcB5xbdY1EvfBdqUOXqFR4";
@@ -64,4 +64,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default HomeUniversity;

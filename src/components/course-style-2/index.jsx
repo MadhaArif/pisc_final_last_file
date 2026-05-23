@@ -5,7 +5,7 @@ import CourseTwoArea from './course-2-area';
 import CounterArea from '../homes/home-university/counter-area';
 import TestimonialArea from '../homes/home-university/testimonial-area';
 
-const index = () => {
+const CourseStyleTwo = () => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -20,4 +20,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default CourseStyleTwo;

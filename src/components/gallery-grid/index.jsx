@@ -4,7 +4,7 @@ import BreadcrumbThree from '../breadcrumb/breadcrumb-3';
 import AdBanner from '../homes/home-university/ad-banner';
 import GalleryArea from './gallery-area';
 
-const index = () => {
+const GalleryGrid = () => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -17,4 +17,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default GalleryGrid;

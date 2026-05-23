@@ -24,10 +24,10 @@ const BrandArea = () => {
                 );
                 const result = await response.json();
                 result?.values?.shift()
-                setData({
-                    ...data,
+                setData(prev => ({
+                    ...prev,
                     brands: [...result?.values?.splice(0, 3)]
-                    });
+                    }));
             } catch (error) {
                 console.error("Error fetching data: ", error);
             }

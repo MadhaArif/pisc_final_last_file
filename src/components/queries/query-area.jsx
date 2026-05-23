@@ -7,26 +7,26 @@ const QueryArea = () => {
     const [displayedData, setDisplayedData] = useState([]); // State to hold displayed data
     const [displayedCount, setDisplayedCount] = useState(12); // State to track number of items to display
 
-    const readCollection = async () => {
-        const db = getFirestore(firebaseApp);
-
-        // Query the collection and sort by createdAt in descending order
-        const q = query(collection(db, "users"), orderBy("createdAt", "desc"));
-        const querySnapshot = await getDocs(q);
-
-        // Map through the snapshot to extract data and document IDs
-        const dataList = querySnapshot.docs.map((doc) => ({
-            id: doc.id, // Add document ID
-            ...doc.data(), // Spread document fields
-        }));
-
-        setAllData(dataList); // Set all data in state
-        setDisplayedData(dataList.slice(0, displayedCount)); // Show first 12 items initially
-    };
-
     useEffect(() => {
+        const readCollection = async () => {
+            const db = getFirestore(firebaseApp);
+
+            // Query the collection and sort by createdAt in descending order
+            const q = query(collection(db, "users"), orderBy("createdAt", "desc"));
+            const querySnapshot = await getDocs(q);
+
+            // Map through the snapshot to extract data and document IDs
+            const dataList = querySnapshot.docs.map((doc) => ({
+                id: doc.id, // Add document ID
+                ...doc.data(), // Spread document fields
+            }));
+
+            setAllData(dataList); // Set all data in state
+            setDisplayedData(dataList.slice(0, displayedCount)); // Show first 12 items initially
+        };
+
         readCollection();
-    }, []);
+    }, [displayedCount]);
 
     const handleShowMore = () => {
         const newDisplayedCount = displayedCount + 12;

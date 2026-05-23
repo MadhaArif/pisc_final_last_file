@@ -4,7 +4,7 @@ import BreadcrumbThree from '../breadcrumb/breadcrumb-3';
 import ContactMap from './contact-map';
 import ContactUsArea from './contact-us-area';
 
-const index = () => {
+const ContactUs = () => {
     return (
         <div className='sticky-header'>
             <div id="main-wrapper" className="main-wrapper">
@@ -18,4 +18,4 @@ const index = () => {
     )
 }
 
-export default index;
+export default ContactUs;
