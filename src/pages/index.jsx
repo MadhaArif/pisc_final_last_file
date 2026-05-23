@@ -67,24 +67,39 @@ export default function Home() {
               </div>
               
               <div className="p-3 text-center" style={{ position: 'absolute', bottom: '20px', left: '0', right: '0' }}>
+                <style jsx>{`
+                  @keyframes pulse-green {
+                    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+                    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+                    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+                  }
+                  .btn-apply-now {
+                    animation: pulse-green 2s infinite;
+                  }
+                `}</style>
                 <button 
                   onClick={handleWhatsAppClick}
-                  className="edu-btn"
+                  className="edu-btn btn-apply-now"
                   style={{ 
-                    backgroundColor: '#25D366', 
+                    background: 'linear-gradient(to right, #25D366, #128C7E)', 
                     border: 'none', 
                     color: '#fff',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '10px',
-                    padding: '10px 30px',
+                    justifyContent: 'center',
+                    gap: '12px',
+                    padding: '14px 40px',
                     borderRadius: '50px',
-                    fontWeight: 'bold',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+                    fontWeight: '800',
+                    fontSize: '18px',
+                    boxShadow: '0 10px 25px rgba(37, 211, 102, 0.4)',
+                    transition: 'all 0.3s ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px'
                   }}
                 >
-                  <i className="ri-whatsapp-line" style={{ fontSize: '24px' }}></i>
-                  WhatsApp Now
+                  <i className="ri-whatsapp-fill" style={{ fontSize: '26px' }}></i>
+                  Apply Now
                 </button>
               </div>
             </div>
