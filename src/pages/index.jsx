@@ -5,55 +5,38 @@ import SEO from "../components/seo";
 import { Wrapper } from "../layout";
 
 export default function Home() {
-  const [data, setData] = useState([]);
-  const API_KEY = "AIzaSyCm3_Cs0m__byx-jAF2fVna5wU7oHh8p7o";
-  const SPREADSHEET_ID = "1ofS_nOKGHmZbt3-VbMiofhcB5xbdY1EvfBdqUOXqFR4";
-  const RANGE = "other";
-
-  // get data from google excel sheet
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`,
-        );
-        const result = await response.json();
-        result?.values?.shift();
-        setData(result?.values?.splice(0, 3));
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
       import("bootstrap/dist/js/bootstrap.bundle.min.js").then(({ Modal }) => {
-        const modalElement = document.getElementById("exampleModal");
+        const modalElement = document.getElementById("admissionPopup");
         if (modalElement) {
           const modal = new Modal(modalElement);
           modal.show();
         }
       });
-    }, 1800);
+    }, 500);
     return () => window.clearTimeout(timeoutId);
   }, []);
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '923166474545';
+    const message = 'Hello, I am interested in the Matric Complete course.';
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   return (
     <Wrapper>
-      {data.length && data?.[0]?.[0] && data[0][0] !== "0" && (
-        <div
-          style={{ margin: "100px 0 0" }}
-          className="modal fade"
-          id="exampleModal"
-          tabIndex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
+      <div
+        className="modal fade"
+        id="admissionPopup"
+        tabIndex="-1"
+        aria-hidden="true"
+        style={{ zIndex: 99999 }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content" style={{ border: 'none', borderRadius: '15px', overflow: 'hidden', backgroundColor: 'transparent' }}>
+            <div className="modal-body p-0" style={{ position: 'relative' }}>
               <button
                 type="button"
                 className="btn-close"
@@ -61,27 +44,53 @@ export default function Home() {
                 aria-label="Close"
                 style={{
                   position: "absolute",
-                  right: "-50px",
-                  color: "var(--color-secondary) !important",
+                  top: "10px",
+                  right: "10px",
+                  zIndex: 100,
+                  backgroundColor: "#fff",
+                  borderRadius: "50%",
+                  padding: "10px",
+                  opacity: 0.8,
+                  border: 'none',
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
                 }}
               ></button>
 
-              <div className="modal-body">
-                <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
-                  <Image
-                    src={`/assets/images/course/${data[0][0]}`}
-                    alt=""
-                    layout="fill"
-                    objectFit="cover"
-                    sizes="(max-width: 768px) 100vw, 600px"
-                    quality={70}
-                  />
-                </div>
+              <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 4", borderRadius: '15px', overflow: 'hidden' }}>
+                <Image
+                  src="/assets/images/admission-popup.jpeg"
+                  alt="Admissions Open"
+                  layout="fill"
+                  objectFit="cover"
+                  priority
+                />
+              </div>
+              
+              <div className="p-3 text-center" style={{ position: 'absolute', bottom: '20px', left: '0', right: '0' }}>
+                <button 
+                  onClick={handleWhatsAppClick}
+                  className="edu-btn"
+                  style={{ 
+                    backgroundColor: '#25D366', 
+                    border: 'none', 
+                    color: '#fff',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    padding: '10px 30px',
+                    borderRadius: '50px',
+                    fontWeight: 'bold',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+                  }}
+                >
+                  <i className="ri-whatsapp-line" style={{ fontSize: '24px' }}></i>
+                  WhatsApp Now
+                </button>
               </div>
             </div>
           </div>
         </div>
-      )}
+      </div>
 
       <SEO pageTitle={"Home"} />
       <HomeUniversity />
